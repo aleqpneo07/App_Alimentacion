@@ -1,0 +1,124 @@
+{
+  "entities": {
+    "NutritionProfile": {
+      "title": "NutritionProfile",
+      "description": "User physical profile and daily calorie, macronutrient, and hydration goals.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Owner Firebase Auth UID" },
+        "weightKg": { "type": "number", "description": "Current body weight in kg" },
+        "targetWeightKg": { "type": "number", "description": "Target body weight in kg" },
+        "heightCm": { "type": "integer", "description": "Height in cm" },
+        "age": { "type": "integer", "description": "Age in years" },
+        "activityLevel": {
+          "type": "string",
+          "enum": ["SEDENTARY", "LIGHT", "MODERATE", "ACTIVE", "ATHLETE"],
+          "description": "Physical activity multiplier tier"
+        },
+        "goalType": {
+          "type": "string",
+          "enum": ["DEFICIT", "MAINTAIN", "SURPLUS"],
+          "description": "Caloric goal mode"
+        },
+        "dailyCalorieGoal": { "type": "integer", "description": "Target daily kcal" },
+        "proteinGoalG": { "type": "integer", "description": "Target daily protein in grams" },
+        "carbsGoalG": { "type": "integer", "description": "Target daily carbs in grams" },
+        "fatGoalG": { "type": "integer", "description": "Target daily fat in grams" },
+        "waterGoalMl": { "type": "integer", "description": "Target daily water intake in ml" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Server timestamp" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Server timestamp" }
+      },
+      "required": [
+        "userId",
+        "weightKg",
+        "targetWeightKg",
+        "heightCm",
+        "age",
+        "activityLevel",
+        "goalType",
+        "dailyCalorieGoal",
+        "proteinGoalG",
+        "carbsGoalG",
+        "fatGoalG",
+        "waterGoalMl",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "MealLog": {
+      "title": "MealLog",
+      "description": "Individual food or dish entry logged by a user on a given date and meal slot.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Owner Firebase Auth UID" },
+        "dateKey": { "type": "string", "description": "ISO date string YYYY-MM-DD" },
+        "mealType": {
+          "type": "string",
+          "enum": ["BREAKFAST", "LUNCH", "DINNER", "SNACK"],
+          "description": "Meal slot of the day"
+        },
+        "foodName": { "type": "string", "description": "Product or dish name" },
+        "brandOrSource": { "type": "string", "description": "Brand name, Open Food Facts, Gemini AI, or Manual" },
+        "servingGrams": { "type": "integer", "description": "Consumed portion in grams" },
+        "calories": { "type": "integer", "description": "Total kcal for consumed portion" },
+        "proteinG": { "type": "integer", "description": "Protein in grams" },
+        "carbsG": { "type": "integer", "description": "Carbohydrates in grams" },
+        "fatG": { "type": "integer", "description": "Fat in grams" },
+        "barcode": { "type": "string", "description": "Optional EAN/QR barcode" },
+        "ingredientsSummary": { "type": "string", "description": "Optional AI-detected ingredients breakdown" },
+        "nutriScore": { "type": "string", "description": "Optional Nutri-Score grade (A-E)" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Server timestamp" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Server timestamp" }
+      },
+      "required": [
+        "userId",
+        "dateKey",
+        "mealType",
+        "foodName",
+        "brandOrSource",
+        "servingGrams",
+        "calories",
+        "proteinG",
+        "carbsG",
+        "fatG",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "DailyMetric": {
+      "title": "DailyMetric",
+      "description": "Daily hydration and body weight log for a specific date.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Owner Firebase Auth UID" },
+        "dateKey": { "type": "string", "description": "ISO date string YYYY-MM-DD" },
+        "waterMl": { "type": "integer", "description": "Total water consumed in ml on this date" },
+        "loggedWeightKg": { "type": "number", "description": "Body weight in kg recorded on this date" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Server timestamp" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Server timestamp" }
+      },
+      "required": [
+        "userId",
+        "dateKey",
+        "waterMl",
+        "loggedWeightKg",
+        "createdAt",
+        "updatedAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/users/{userId}/profile/{profileId}": {
+      "schema": { "$ref": "#/entities/NutritionProfile" },
+      "description": "Stores the user's physical stats and nutritional targets."
+    },
+    "/users/{userId}/mealLogs/{logId}": {
+      "schema": { "$ref": "#/entities/MealLog" },
+      "description": "Stores food and plate entries logged by the user."
+    },
+    "/users/{userId}/dailyMetrics/{dateKey}": {
+      "schema": { "$ref": "#/entities/DailyMetric" },
+      "description": "Stores daily water intake and body weight tracking per date."
+    }
+  }
+}

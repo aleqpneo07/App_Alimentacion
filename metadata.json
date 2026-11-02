@@ -1,0 +1,6 @@
+{
+  "name": "NutriPulse",
+  "description": "Diario nutricional inteligente con escáner de códigos de barras Open Food Facts, análisis de platos por foto con Gemini AI y sincronización en Firebase.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

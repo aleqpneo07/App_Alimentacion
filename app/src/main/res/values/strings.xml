@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">NutriPulse</string>
+    <string name="auth_title">NutriPulse AI</string>
+    <string name="auth_subtitle">Tu diario nutricional inteligente a coste 0 €: escáner Open Food Facts, visión artificial con Gemini Flash y sincronización en la nube.</string>
+    <string name="sign_in_with_google">Iniciar sesión con Google</string>
+    <string name="tab_today">Diario Hoy</string>
+    <string name="tab_scan">Código / QR</string>
+    <string name="tab_ai_photo">Foto con IA</string>
+    <string name="tab_goals">Metas y Peso</string>
+    <string name="calories_remaining">KCAL RESTANTES</string>
+    <string name="calories_exceeded">KCAL EXCEDIDAS</string>
+    <string name="water_tracker_title">Hidratación Diaria</string>
+    <string name="weight_tracker_title">Peso Corporal</string>
+    <string name="scan_barcode_cta">Escanear Código EAN / QR</string>
+    <string name="analyze_plate_cta">Analizar Plato con IA</string>
+</resources>

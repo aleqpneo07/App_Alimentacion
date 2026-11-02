@@ -1,0 +1,6 @@
+{
+  "summary": "Plan de implementación completo a coste 0 € para NutriPulse AI, una aplicación Android de seguimiento nutricional inspirada en Yazio y Calorie Counter con escáner de códigos de barras/QR (Open Food Facts), análisis visual de platos con Gemini Flash (Firebase AI Logic) y sincronización en la nube con Firebase Firestore y Google Sign-In.",
+  "updatedAt": "2026-11-02T16:07:13.496467393Z",
+  "requestFeedback": true,
+  "userFacing": true
+}
